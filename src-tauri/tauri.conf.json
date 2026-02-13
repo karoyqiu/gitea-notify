@@ -15,6 +15,7 @@
         "title": "Gitea notifications",
         "width": 600,
         "height": 360,
+        "create": false,
         "center": true,
         "visible": false
       }
