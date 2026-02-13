@@ -1,0 +1,3 @@
+# gitea-notify
+
+Gitea notifications.
