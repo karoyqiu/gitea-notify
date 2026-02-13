@@ -114,7 +114,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  label:has(+ input:required):after,
+  label:has(+ * input:required):after,
+  label.required:after {
+    content: ' *'; /* Add a space before the asterisk for spacing */
+    @apply text-red-500;
   }
 }

@@ -13,14 +13,18 @@
     "ui": "pnpm dlx shadcn@latest"
   },
   "dependencies": {
+    "@tanstack/react-form": "^1.28.1",
+    "@tanstack/react-query": "^5.90.21",
     "@tauri-apps/api": "^2.6.0",
+    "@tauri-apps/plugin-store": "~2.4.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
+    "radix-ui": "latest",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwind-merge": "^3.3.1",
-    "radix-ui": "latest"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
