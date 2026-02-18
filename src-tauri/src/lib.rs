@@ -68,14 +68,15 @@ async fn check_repo_workflow_runs(app: &AppHandle, gitea: &Gitea) -> reqwest::Re
     if let Some(runs) = runs.workflow_runs {
       for run in runs {
         let key = format!("{}#{}", repo.full_name, run.run_number);
+        let line = format!("{} - {}", key, run.status);
 
         if let Some(known_status) = known_runs.insert(key, run.status.clone()) {
           // 已经见过了，比较当前状态与之前的状态
           if known_status != run.status {
-            lines.push(format!("{} - {}", repo.full_name, run.status));
+            lines.push(line);
           }
         } else {
-          lines.push(format!("{} - {}", repo.full_name, run.status));
+          lines.push(line);
         }
       }
     }

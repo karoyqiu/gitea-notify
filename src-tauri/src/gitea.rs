@@ -1,4 +1,5 @@
-use reqwest::{Client, Method, Proxy, Result};
+use chrono::{DateTime, Local};
+use reqwest::{Client, Method, Result};
 use serde::{Deserialize, Serialize};
 
 /// Repository : Repository represents a repository
@@ -143,7 +144,7 @@ pub struct ActionWorkflowRun {
   // #[serde(rename = "actor", skip_serializing_if = "Option::is_none")]
   // pub actor: Option<Box<models::User>>,
   #[serde(rename = "completed_at", skip_serializing_if = "Option::is_none")]
-  pub completed_at: Option<String>,
+  pub completed_at: Option<DateTime<Local>>,
   #[serde(rename = "conclusion", skip_serializing_if = "Option::is_none")]
   pub conclusion: Option<String>,
   #[serde(rename = "display_title", skip_serializing_if = "Option::is_none")]
@@ -171,7 +172,7 @@ pub struct ActionWorkflowRun {
   //#[serde(rename = "run_number", skip_serializing_if = "Option::is_none")]
   pub run_number: i64,
   #[serde(rename = "started_at", skip_serializing_if = "Option::is_none")]
-  pub started_at: Option<String>,
+  pub started_at: Option<DateTime<Local>>,
   //#[serde(rename = "status", skip_serializing_if = "Option::is_none")]
   pub status: String,
   // #[serde(rename = "trigger_actor", skip_serializing_if = "Option::is_none")]
