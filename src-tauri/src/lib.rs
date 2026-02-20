@@ -68,7 +68,7 @@ async fn check_repo_workflow_runs(app: &AppHandle, gitea: &Gitea) -> reqwest::Re
     if let Some(runs) = runs.workflow_runs {
       for run in runs {
         let key = format!("{}#{}", repo.full_name, run.run_number);
-        let line = format!("{} - {}", key, run.status);
+        let line = format!("{}:\n{} - {}", key, run.status, run.conclusion.unwrap_or("running".into()));
 
         if let Some(known_status) = known_runs.insert(key, run.status.clone()) {
           // 已经见过了，比较当前状态与之前的状态
@@ -85,7 +85,7 @@ async fn check_repo_workflow_runs(app: &AppHandle, gitea: &Gitea) -> reqwest::Re
   if !lines.is_empty() {
     // 统一通知
     let title = String::from("工作流运行状态变更");
-    let body = lines.join("\n");
+    let body = lines.join("\n\n");
     let _ = app.notification().builder().title(title).body(body).show();
   }
 
